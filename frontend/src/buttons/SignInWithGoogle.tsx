@@ -3,6 +3,9 @@ import { supabaseClient } from "../supabase/supabaseClient";
 const signInWithGoogle = async () => {
   const { error } = await supabaseClient.auth.signInWithOAuth({
     provider: 'google',
+      options: {
+        redirectTo: import.meta.env.VITE_SITE_URL
+      }
   });
     if (error) {
     console.error('Google login error:', error.message);
